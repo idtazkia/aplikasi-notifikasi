@@ -1,12 +1,12 @@
-package id.ac.tazkia.notifikasi.aplikasinotifikasi;
+package id.ac.tazkia.notification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AplikasiNotifikasiApplication {
+public class NotificationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AplikasiNotifikasiApplication.class, args);
+		SpringApplication.run(NotificationApplication.class, args);
 	}
 }

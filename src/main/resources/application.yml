@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: notification
+  datasource:
+    url: jdbc:postgresql://localhost/notifikasidb
+    username: notifikasiuser
+    password: notifikasi01
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  jackson:
+    serialization:
+      indent-output: true
