@@ -18,16 +18,8 @@ public class Notification {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id_sender")
-    private Sender sender;
-
-    @ManyToOne
-    @JoinColumn(name = "id_template_email")
-    private TemplateEmail templateEmail;
-
-    @ManyToOne
-    @JoinColumn(name = "id_template_sms")
-    private TemplateSms templateSms;
+    @JoinColumn(name = "id_notification_configuration")
+    private NotificationConfiguration notificationConfiguration;
 
     @NotNull
     private LocalDateTime submitTime = LocalDateTime.now();

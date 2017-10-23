@@ -1,5 +1,5 @@
-insert into notification(id, id_sender, id_template_email, id_template_sms, submit_time, send_time, notification_status)
-VALUES ('test-001','keuangan','email-keu-tagihan','sms-keu-tagihan', now(), NULL, 'NEW');
+insert into notification(id, id_notification_configuration, submit_time, send_time, notification_status)
+VALUES ('test-001','keu-tagihan', now(), NULL, 'NEW');
 
 insert into notification_variable(id, id_notification, variable_name, variable_content)
 VALUES ('test-001-nama', 'test-001', 'nama', 'Endy Muhardin');

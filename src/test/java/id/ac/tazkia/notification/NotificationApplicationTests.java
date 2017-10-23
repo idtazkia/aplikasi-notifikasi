@@ -1,12 +1,10 @@
 package id.ac.tazkia.notification;
 
+import id.ac.tazkia.notification.dao.NotificationConfigurationDao;
 import id.ac.tazkia.notification.dao.NotificationDao;
 import id.ac.tazkia.notification.dao.NotificationVariableDao;
 import id.ac.tazkia.notification.dao.SenderDao;
-import id.ac.tazkia.notification.entity.Notification;
-import id.ac.tazkia.notification.entity.NotificationStatus;
-import id.ac.tazkia.notification.entity.NotificationVariable;
-import id.ac.tazkia.notification.entity.Sender;
+import id.ac.tazkia.notification.entity.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +25,7 @@ import java.util.Set;
 public class NotificationApplicationTests {
 
     @Autowired private SenderDao senderDao;
+    @Autowired private NotificationConfigurationDao notificationConfigurationDao;
     @Autowired private NotificationDao notificationDao;
     @Autowired private NotificationVariableDao notificationVariableDao;
 
@@ -66,8 +65,11 @@ public class NotificationApplicationTests {
         Sender s = senderDao.findById("keuangan").get();
         Assert.assertNotNull(s);
 
+        NotificationConfiguration config = notificationConfigurationDao.findById("keu-tagihan").get();
+        Assert.assertNotNull(config);
+
         Notification n = new Notification();
-        n.setSender(s);
+        n.setNotificationConfiguration(config);
 
         NotificationVariable nv = new NotificationVariable();
         nv.setNotification(n);
