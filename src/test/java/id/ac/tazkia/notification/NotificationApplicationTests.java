@@ -17,6 +17,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
@@ -57,5 +59,24 @@ public class NotificationApplicationTests {
         }
 
         Assert.assertTrue(total == 6);
+    }
+
+    @Test
+    public void testInsertNotification(){
+        Sender s = senderDao.findById("keuangan").get();
+        Assert.assertNotNull(s);
+
+        Notification n = new Notification();
+        n.setSender(s);
+
+        NotificationVariable nv = new NotificationVariable();
+        nv.setNotification(n);
+        nv.setVariableName("tanggal");
+        nv.setVariableContent(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")));
+        n.getVariables().add(nv);
+
+        notificationDao.save(n);
+        Assert.assertNotNull(n.getId());
+        Assert.assertNotNull(nv.getId());
     }
 }
