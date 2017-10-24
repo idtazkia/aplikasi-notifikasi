@@ -1,20 +1,24 @@
 package id.ac.tazkia.notification.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = "variables")
 public class NotificationConfiguration {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-
 
     @NotNull
     @ManyToOne
@@ -33,4 +37,8 @@ public class NotificationConfiguration {
     @NotEmpty
     private String configurationName;
     private String description;
+
+    @OneToMany(mappedBy = "notificationConfiguration", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<NotificationConfigurationVariable> variables = new HashSet<>();
+
 }

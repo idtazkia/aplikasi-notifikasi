@@ -42,28 +42,20 @@ CREATE TABLE notification_configuration_variable (
   id                            VARCHAR(36),
   id_notification_configuration VARCHAR(36)  NOT NULL,
   variable_name                 VARCHAR(255) NOT NULL,
-  description      VARCHAR(255),
+  description                   VARCHAR(255),
+  required                      BOOLEAN      NOT NULL DEFAULT FALSE,
   PRIMARY KEY (id),
   FOREIGN KEY (id_notification_configuration) REFERENCES notification_configuration (id),
   UNIQUE (id_notification_configuration, variable_name)
 );
-
 
 CREATE TABLE notification (
   id                            VARCHAR(36),
   id_notification_configuration VARCHAR(36)  NOT NULL,
   submit_time                   TIMESTAMP    NOT NULL,
   send_time                     TIMESTAMP,
+  notification_content          TEXT         NOT NULL,
   notification_status           VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_notification_configuration) REFERENCES notification_configuration (id)
-);
-
-CREATE TABLE notification_variable (
-  id               VARCHAR(36),
-  id_notification  VARCHAR(36)  NOT NULL,
-  variable_name    VARCHAR(255) NOT NULL,
-  variable_content TEXT         NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_notification) REFERENCES notification (id)
 );

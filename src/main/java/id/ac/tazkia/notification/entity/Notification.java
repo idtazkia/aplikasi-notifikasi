@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -28,6 +29,6 @@ public class Notification {
     @NotNull @Enumerated(EnumType.STRING)
     private NotificationStatus notificationStatus = NotificationStatus.NEW;
 
-    @OneToMany(mappedBy = "notification", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<NotificationVariable> variables = new HashSet<>();
+    @NotNull @NotEmpty
+    private String notificationContent;
 }

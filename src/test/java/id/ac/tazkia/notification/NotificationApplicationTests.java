@@ -2,7 +2,6 @@ package id.ac.tazkia.notification;
 
 import id.ac.tazkia.notification.dao.NotificationConfigurationDao;
 import id.ac.tazkia.notification.dao.NotificationDao;
-import id.ac.tazkia.notification.dao.NotificationVariableDao;
 import id.ac.tazkia.notification.dao.SenderDao;
 import id.ac.tazkia.notification.entity.*;
 import org.junit.Assert;
@@ -17,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,7 +25,6 @@ public class NotificationApplicationTests {
     @Autowired private SenderDao senderDao;
     @Autowired private NotificationConfigurationDao notificationConfigurationDao;
     @Autowired private NotificationDao notificationDao;
-    @Autowired private NotificationVariableDao notificationVariableDao;
 
     @Test
     public void testRun(){
@@ -48,16 +45,6 @@ public class NotificationApplicationTests {
         Assert.assertNotNull(notif.getId());
         Assert.assertEquals(NotificationStatus.NEW, notif.getNotificationStatus());
         System.out.println(notif.getSubmitTime());
-
-        Iterable<NotificationVariable> vars = notificationVariableDao.findByNotification(notif);
-        Assert.assertNotNull(vars);
-        
-        Integer total = 0;
-        for (NotificationVariable var : vars) {
-            total++;
-        }
-
-        Assert.assertTrue(total == 6);
     }
 
     @Test
@@ -70,15 +57,9 @@ public class NotificationApplicationTests {
 
         Notification n = new Notification();
         n.setNotificationConfiguration(config);
-
-        NotificationVariable nv = new NotificationVariable();
-        nv.setNotification(n);
-        nv.setVariableName("tanggal");
-        nv.setVariableContent(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")));
-        n.getVariables().add(nv);
+        n.setNotificationContent("{\"nama\":\"endy\"}");
 
         notificationDao.save(n);
         Assert.assertNotNull(n.getId());
-        Assert.assertNotNull(nv.getId());
     }
 }

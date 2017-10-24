@@ -1,8 +1,12 @@
 {
-    "nama": "Tester Siswa 001",
-    "jumlah": "101001",
-    "rekening": "BNI Syariah 1234 5678 a.n Yayasan Tazkia",
-    "deskripsi": "Uang Pendaftaran",
-    "tanggal": "17-Aug-1945",
-    "contact": "081234567890"
+    "email" : "endy@muhardin.com",
+    "mobile" : "081298000468",
+    "data" : {
+        "nama": "Tester Siswa 001",
+        "jumlah": "101001",
+        "rekening": "BNI Syariah 1234 5678 a.n Yayasan Tazkia",
+        "deskripsi": "Uang Pendaftaran",
+        "tanggal": "17-Aug-1945",
+        "contact": "081234567890"
+    }
 }

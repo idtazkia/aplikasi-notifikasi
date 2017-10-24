@@ -1,20 +1,2 @@
-insert into notification(id, id_notification_configuration, submit_time, send_time, notification_status)
-VALUES ('test-001','keu-tagihan', now(), NULL, 'NEW');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-nama', 'test-001', 'nama', 'Endy Muhardin');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-jumlah', 'test-001', 'jumlah', '100000');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-rekening', 'test-001', 'rekening', 'BNI Syariah 001 002 003 a.n Yayasan Tazkia Cendekia');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-deskripsi', 'test-001', 'deskripsi', 'Pendaftaran Siswa Baru');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-tanggal', 'test-001', 'tanggal', '31-Des-2017');
-
-insert into notification_variable(id, id_notification, variable_name, variable_content)
-VALUES ('test-001-contact', 'test-001', 'contactinfo', '018234567890');
+insert into notification(id, id_notification_configuration, submit_time, send_time, notification_status, notification_content)
+VALUES ('test-001','keu-tagihan', now(), NULL, 'NEW', '{"nama": "Tester Siswa 001","jumlah": "101001","rekening": "BNI Syariah 1234 5678 a.n Yayasan Tazkia","deskripsi": "Uang Pendaftaran","tanggal": "17-Aug-1945","contact": "081234567890"}');
