@@ -8,6 +8,7 @@ CREATE TABLE sender (
 CREATE TABLE template_email (
   id          VARCHAR(36),
   id_sender   VARCHAR(36) NOT NULL,
+  subject     VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   file_location    VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
@@ -63,6 +64,19 @@ CREATE TABLE sms_notification (
   id_notification     VARCHAR(36) NOT NULL,
   destination_number  VARCHAR(36) NOT NULL,
   content             TEXT        NOT NULL,
+  send_time           TIMESTAMP   NOT NULL,
+  notification_status VARCHAR(20) NOT NULL,
+  delivery_remarks    VARCHAR(255),
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_notification) REFERENCES notification (id)
+);
+
+CREATE TABLE email_notification (
+  id                  VARCHAR(36),
+  id_notification     VARCHAR(36) NOT NULL,
+  mail_to                  VARCHAR(255) NOT NULL,
+  subject             VARCHAR(255) NOT NULL,
+  body                TEXT        NOT NULL,
   send_time           TIMESTAMP   NOT NULL,
   notification_status VARCHAR(20) NOT NULL,
   delivery_remarks    VARCHAR(255),

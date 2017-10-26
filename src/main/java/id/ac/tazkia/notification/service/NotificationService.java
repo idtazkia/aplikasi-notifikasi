@@ -4,18 +4,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
+import id.ac.tazkia.notification.dao.EmailNotificationDao;
 import id.ac.tazkia.notification.dao.NotificationDao;
 import id.ac.tazkia.notification.dao.SmsNotificationDao;
 import id.ac.tazkia.notification.dto.NotificationRequest;
-import id.ac.tazkia.notification.entity.Notification;
-import id.ac.tazkia.notification.entity.NotificationConfiguration;
-import id.ac.tazkia.notification.entity.NotificationStatus;
-import id.ac.tazkia.notification.entity.SmsNotification;
+import id.ac.tazkia.notification.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -23,9 +23,11 @@ import java.io.StringWriter;
 public class NotificationService {
 
     @Autowired private SmsNotificationDao smsNotificationDao;
+    @Autowired private EmailNotificationDao emailNotificationDao;
     @Autowired private NotificationDao notificationDao;
     @Autowired private ObjectMapper objectMapper;
     @Autowired private MustacheFactory mustacheFactory;
+    @Value("${template.email.basedir}") private String emailTemplateBasedir;
 
     public void create(NotificationConfiguration config, NotificationRequest request) throws JsonProcessingException {
         Notification notif = new Notification();
@@ -45,6 +47,28 @@ public class NotificationService {
             sms.setNotificationStatus(NotificationStatus.NEW);
             sms.setContent(output.toString());
             smsNotificationDao.save(sms);
+        }
+
+        if (StringUtils.hasText(request.getEmail())) {
+            StringReader subjectTemplate = new StringReader(config.getTemplateEmail().getSubject());
+            Mustache mustacheSubject = mustacheFactory.compile(subjectTemplate, "smstemplate");
+            StringWriter subject = new StringWriter();
+            mustacheSubject.execute(subject, request.getData());
+
+            String template = emailTemplateBasedir + File.separator +
+                    config.getSender().getId() + File.separator +
+                    config.getTemplateEmail().getFileLocation();
+            Mustache mustacheBody = mustacheFactory.compile(template);
+            StringWriter body = new StringWriter();
+            mustacheBody.execute(body, request.getData());
+
+            EmailNotification email = new EmailNotification();
+            email.setNotificationStatus(NotificationStatus.NEW);
+            email.setNotification(notif);
+            email.setBody(body.toString());
+            email.setSubject(subject.toString());
+            email.setTo(request.getEmail());
+            emailNotificationDao.save(email);
         }
     }
 }

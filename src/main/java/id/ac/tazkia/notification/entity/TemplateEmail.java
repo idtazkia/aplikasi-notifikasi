@@ -18,6 +18,9 @@ public class TemplateEmail {
     private Sender sender;
 
     @NotNull
+    private String subject;
+
+    @NotNull
     private String description;
 
     @NotNull

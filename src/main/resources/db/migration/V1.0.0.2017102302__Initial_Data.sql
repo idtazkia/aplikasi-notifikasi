@@ -12,11 +12,11 @@ VALUES ('sms-keu-pembayaran', 'keuangan', 'Template SMS Pembayaran',
         'Salam. Yth Bpk/Ibu {{nama}} telah ditransfer Rp.{{jumlah}} ke {{rekening}} utk {{deskripsi}}.Info {{contactinfo}}');
 
 
-INSERT INTO template_email (id, id_sender, description, file_location)
-VALUES ('email-keu-tagihan', 'keuangan', 'Template Email Tagihan', 'tagihan.html');
+INSERT INTO template_email (id, id_sender, description, subject, file_location)
+VALUES ('email-keu-tagihan', 'keuangan', 'Template Email Tagihan', 'Tagihan {{deskripsi}}', 'tagihan.html');
 
-INSERT INTO template_email (id, id_sender, description, file_location)
-VALUES ('email-keu-pembayaran', 'keuangan', 'Template Email Pembayaran', 'pembayaran.html');
+INSERT INTO template_email (id, id_sender, description, subject, file_location)
+VALUES ('email-keu-pembayaran', 'keuangan', 'Template Email Pembayaran', 'Pembayaran {{deskripsi}}', 'pembayaran.html');
 
 INSERT INTO notification_configuration (id, id_sender, id_template_email, id_template_sms, configuration_name, description)
 VALUES ('keu-tagihan', 'keuangan', 'email-keu-tagihan', 'sms-keu-tagihan', 'Tagihan', 'Notifikasi tagihan uang sekolah');

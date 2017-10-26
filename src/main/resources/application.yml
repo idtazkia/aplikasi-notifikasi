@@ -12,3 +12,7 @@ spring:
   jackson:
     serialization:
       indent-output: true
+
+template:
+  email:
+    basedir: templates/email
