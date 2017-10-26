@@ -53,9 +53,19 @@ CREATE TABLE notification (
   id                            VARCHAR(36),
   id_notification_configuration VARCHAR(36)  NOT NULL,
   submit_time                   TIMESTAMP    NOT NULL,
-  send_time                     TIMESTAMP,
-  notification_content          TEXT         NOT NULL,
-  notification_status           VARCHAR(255) NOT NULL,
+  notification_data          TEXT         NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_notification_configuration) REFERENCES notification_configuration (id)
+);
+
+CREATE TABLE sms_notification (
+  id                  VARCHAR(36),
+  id_notification     VARCHAR(36) NOT NULL,
+  destination_number  VARCHAR(36) NOT NULL,
+  content             TEXT        NOT NULL,
+  send_time           TIMESTAMP   NOT NULL,
+  notification_status VARCHAR(20) NOT NULL,
+  delivery_remarks    VARCHAR(255),
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_notification) REFERENCES notification (id)
 );

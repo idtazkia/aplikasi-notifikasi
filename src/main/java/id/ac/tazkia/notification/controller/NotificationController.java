@@ -3,26 +3,24 @@ package id.ac.tazkia.notification.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import id.ac.tazkia.notification.dao.NotificationConfigurationDao;
-import id.ac.tazkia.notification.dao.NotificationDao;
 import id.ac.tazkia.notification.dto.NotificationRequest;
-import id.ac.tazkia.notification.entity.Notification;
 import id.ac.tazkia.notification.entity.NotificationConfiguration;
 import id.ac.tazkia.notification.entity.NotificationConfigurationVariable;
+import id.ac.tazkia.notification.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@RestController @Transactional
+@RestController
 @RequestMapping("/api/client")
 public class NotificationController {
 
     @Autowired private NotificationConfigurationDao notificationConfigurationDao;
-    @Autowired private NotificationDao notificationDao;
+    @Autowired private NotificationService notificationService;
     @Autowired private ObjectMapper objectMapper;
 
     @PostMapping("/notification/{id}")
@@ -51,10 +49,7 @@ public class NotificationController {
         }
 
         try {
-            Notification notif = new Notification();
-            notif.setNotificationConfiguration(config.get());
-            notif.setNotificationContent(objectMapper.writeValueAsString(request.getData()));
-            notificationDao.save(notif);
+            notificationService.create(config.get(), request);
             return ResponseEntity.ok().build();
         } catch (JsonProcessingException e) {
             return generateErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);

@@ -7,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
@@ -24,11 +22,7 @@ public class Notification {
 
     @NotNull
     private LocalDateTime submitTime = LocalDateTime.now();
-    private LocalDateTime sendTime;
-
-    @NotNull @Enumerated(EnumType.STRING)
-    private NotificationStatus notificationStatus = NotificationStatus.NEW;
 
     @NotNull @NotEmpty
-    private String notificationContent;
+    private String notificationData;
 }

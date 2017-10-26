@@ -1,2 +1,2 @@
-insert into notification(id, id_notification_configuration, submit_time, send_time, notification_status, notification_content)
-VALUES ('test-001','keu-tagihan', now(), NULL, 'NEW', '{"nama": "Tester Siswa 001","jumlah": "101001","rekening": "BNI Syariah 1234 5678 a.n Yayasan Tazkia","deskripsi": "Uang Pendaftaran","tanggal": "17-Aug-1945","contact": "081234567890"}');
+insert into notification(id, id_notification_configuration, submit_time, notification_data)
+VALUES ('test-001','keu-tagihan', now(), '{"nama": "Tester Siswa 001","jumlah": "101001","rekening": "BNI Syariah 1234 5678 a.n Yayasan Tazkia","deskripsi": "Uang Pendaftaran","tanggal": "17-Aug-1945","contact": "081234567890"}');
