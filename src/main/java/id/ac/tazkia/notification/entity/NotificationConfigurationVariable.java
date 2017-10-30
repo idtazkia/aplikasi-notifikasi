@@ -7,14 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
-@Entity
-public class NotificationConfigurationVariable {
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+@Data @Entity
+public class NotificationConfigurationVariable extends BaseEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_notification_configuration")

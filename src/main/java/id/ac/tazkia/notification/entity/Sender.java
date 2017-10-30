@@ -9,13 +9,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
-@Entity
-public class Sender {
-    @Id @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+@Data @Entity
+public class Sender extends BaseEntity {
     @NotNull @NotEmpty
     private String name;
 }

@@ -25,7 +25,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class NotificationApplicationTests {
     @Autowired private NotificationService notificationService;
     @Autowired private ObjectMapper objectMapper;
     @Autowired private NotificationSenderService notificationSenderService;
-    @Value("${kafka.topic.name}") private String topic;
+    @Value("${kafka.topic.sms}") private String topic;
 
     @Value("classpath:/json/notification-data.json")
     private Resource notificationData;

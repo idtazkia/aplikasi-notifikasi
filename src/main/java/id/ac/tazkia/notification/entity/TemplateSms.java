@@ -7,13 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
-@Entity
-public class TemplateSms {
-    @Id @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+@Data @Entity
+public class TemplateSms extends BaseEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_sender")

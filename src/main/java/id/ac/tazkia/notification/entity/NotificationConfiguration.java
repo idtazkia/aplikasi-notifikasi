@@ -10,15 +10,10 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
 @Entity
+@Data
 @EqualsAndHashCode(exclude = "variables")
-public class NotificationConfiguration {
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+public class NotificationConfiguration  extends BaseEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_sender")

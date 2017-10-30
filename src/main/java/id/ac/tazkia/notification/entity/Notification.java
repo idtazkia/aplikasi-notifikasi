@@ -8,13 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Data
-@Entity
-public class Notification {
-    @Id @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+@Data @Entity
+public class Notification extends BaseEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_notification_configuration")

@@ -24,4 +24,5 @@ template:
 
 kafka:
   topic:
-    name: notification
+    email: mail-notification
+    sms: sms-notification
