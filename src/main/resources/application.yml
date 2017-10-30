@@ -12,7 +12,16 @@ spring:
   jackson:
     serialization:
       indent-output: true
+  kafka:
+      bootstrap-servers: kafka.artivisi.id:9092
+      consumer:
+        group-id: appnotification
+        auto-offset-reset: earliest
 
 template:
   email:
     basedir: templates/email
+
+kafka:
+  topic:
+    name: notification
