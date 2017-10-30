@@ -29,7 +29,7 @@ public class NotificationService {
     @Autowired private MustacheFactory mustacheFactory;
     @Value("${template.email.basedir}") private String emailTemplateBasedir;
 
-    public void create(NotificationConfiguration config, NotificationRequest request) throws JsonProcessingException {
+    public Notification create(NotificationConfiguration config, NotificationRequest request) throws JsonProcessingException {
         Notification notif = new Notification();
         notif.setNotificationConfiguration(config);
         notif.setNotificationData(objectMapper.writeValueAsString(request.getData()));
@@ -70,5 +70,6 @@ public class NotificationService {
             email.setTo(request.getEmail());
             emailNotificationDao.save(email);
         }
+        return notif;
     }
 }
