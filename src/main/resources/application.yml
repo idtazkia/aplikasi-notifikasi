@@ -26,3 +26,7 @@ kafka:
   topic:
     email: mail-notification
     sms: sms-notification
+
+logging:
+  level:
+    id.ac.tazkia: DEBUG
