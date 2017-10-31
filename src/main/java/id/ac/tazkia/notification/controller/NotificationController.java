@@ -59,6 +59,16 @@ public class NotificationController {
         }
     }
 
+    @GetMapping("/notification/{id}")
+    public Mono<NotificationConfiguration> viewConfig(@PathVariable("id") String configId){
+        return Mono.justOrEmpty(notificationConfigurationDao.findById(configId));
+    }
+
+    @GetMapping("/notification")
+    public Mono<Iterable<NotificationConfiguration>> allConfig(){
+        return Mono.justOrEmpty(notificationConfigurationDao.findAll());
+    }
+
     private ResponseEntity<Map<String, Object>> generateErrorResponse(String message, HttpStatus badRequest) {
         Map<String, Object> responseData = new HashMap<>();
         responseData.put("error", true);
