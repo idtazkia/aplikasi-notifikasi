@@ -1,6 +1,9 @@
 CREATE TABLE sender (
   id   VARCHAR(36),
   name VARCHAR(255) NOT NULL,
+  sms_sender_id VARCHAR(255),
+  sms_username VARCHAR(255),
+  sms_password VARCHAR(255),
   PRIMARY KEY (id),
   UNIQUE (name)
 );
@@ -61,11 +64,14 @@ CREATE TABLE notification (
 
 CREATE TABLE sms_notification (
   id                  VARCHAR(36),
-  id_notification     VARCHAR(36) NOT NULL,
-  destination_number  VARCHAR(36) NOT NULL,
-  content             TEXT        NOT NULL,
-  send_time           TIMESTAMP   NOT NULL,
-  notification_status VARCHAR(20) NOT NULL,
+  id_notification     VARCHAR(36)  NOT NULL,
+  sender_id           VARCHAR(255) NOT NULL,
+  username            VARCHAR(255) NOT NULL,
+  password            VARCHAR(255) NOT NULL,
+  destination_number  VARCHAR(36)  NOT NULL,
+  content             TEXT         NOT NULL,
+  send_time           TIMESTAMP    NOT NULL,
+  notification_status VARCHAR(20)  NOT NULL,
   delivery_remarks    VARCHAR(255),
   PRIMARY KEY (id),
   FOREIGN KEY (id_notification) REFERENCES notification (id)

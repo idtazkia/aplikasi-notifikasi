@@ -1,7 +1,7 @@
-INSERT INTO sender (id, name) VALUES ('it', 'Divisi IT');
-INSERT INTO sender (id, name) VALUES ('keuangan', 'Divisi Keuangan');
-INSERT INTO sender (id, name) VALUES ('akademik', 'Divisi Akademik');
-INSERT INTO sender (id, name) VALUES ('humas', 'Divisi Humas');
+INSERT INTO sender (id, name, sms_sender_id, sms_username, sms_password) VALUES ('it', 'Divisi IT', 'TAZKIA IT', 'tazkiait', 'tazkia123');
+INSERT INTO sender (id, name, sms_sender_id, sms_username, sms_password) VALUES ('keuangan', 'Divisi Keuangan', 'TAZKIA KEU', 'tazkiakeu', 'tazkia123');
+INSERT INTO sender (id, name, sms_sender_id, sms_username, sms_password) VALUES ('akademik', 'Divisi Akademik', 'TAZKIA AKD', 'tazkiaakd', 'tazkia123');
+INSERT INTO sender (id, name, sms_sender_id, sms_username, sms_password) VALUES ('humas', 'Divisi Humas', 'TAZKIA', 'tazkia', 'tazkia123');
 
 INSERT INTO template_sms (id, id_sender, description, template_content)
 VALUES ('sms-keu-tagihan', 'keuangan', 'Template SMS Tagihan',

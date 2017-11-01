@@ -10,4 +10,7 @@ import javax.validation.constraints.NotNull;
 public class Sender extends BaseEntity {
     @NotNull @NotEmpty
     private String name;
+    private String smsSenderId;
+    private String smsUsername;
+    private String smsPassword;
 }

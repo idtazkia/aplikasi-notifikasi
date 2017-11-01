@@ -9,6 +9,8 @@ import id.ac.tazkia.notification.dao.NotificationDao;
 import id.ac.tazkia.notification.dao.SmsNotificationDao;
 import id.ac.tazkia.notification.dto.NotificationRequest;
 import id.ac.tazkia.notification.entity.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -19,15 +21,25 @@ import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-@Service @Transactional
+@Service
+@Transactional
 public class NotificationService {
 
-    @Autowired private SmsNotificationDao smsNotificationDao;
-    @Autowired private EmailNotificationDao emailNotificationDao;
-    @Autowired private NotificationDao notificationDao;
-    @Autowired private ObjectMapper objectMapper;
-    @Autowired private MustacheFactory mustacheFactory;
-    @Value("${template.email.basedir}") private String emailTemplateBasedir;
+    private static final Logger logger =LoggerFactory.getLogger(NotificationService.class);
+
+
+    @Autowired
+    private SmsNotificationDao smsNotificationDao;
+    @Autowired
+    private EmailNotificationDao emailNotificationDao;
+    @Autowired
+    private NotificationDao notificationDao;
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+    private MustacheFactory mustacheFactory;
+    @Value("${template.email.basedir}")
+    private String emailTemplateBasedir;
 
     public Notification create(NotificationConfiguration config, NotificationRequest request) throws JsonProcessingException {
         Notification notif = new Notification();
@@ -35,18 +47,30 @@ public class NotificationService {
         notif.setNotificationData(objectMapper.writeValueAsString(request.getData()));
         notificationDao.save(notif);
 
-        if(StringUtils.hasText(request.getMobile())){
-            StringReader template = new StringReader(config.getTemplateSms().getTemplateContent());
-            Mustache mustache = mustacheFactory.compile(template, "smstemplate");
-            StringWriter output = new StringWriter();
-            mustache.execute(output, request.getData());
+        if (StringUtils.hasText(request.getMobile())) {
 
-            SmsNotification sms = new SmsNotification();
-            sms.setNotification(notif);
-            sms.setDestinationNumber(request.getMobile());
-            sms.setNotificationStatus(NotificationStatus.NEW);
-            sms.setContent(output.toString());
-            smsNotificationDao.save(sms);
+            if (!StringUtils.hasText(config.getSender().getSmsSenderId())) {
+                logger.error("Cannot send sms to {}, invalid sender id", request.getMobile());
+            } else if (!StringUtils.hasText(config.getSender().getSmsUsername())) {
+                logger.error("Cannot send sms to {}, invalid username", request.getMobile());
+            } else if (!StringUtils.hasText(config.getSender().getSmsPassword())) {
+                logger.error("Cannot send sms to {}, invalid password", request.getMobile());
+            } else {
+                StringReader template = new StringReader(config.getTemplateSms().getTemplateContent());
+                Mustache mustache = mustacheFactory.compile(template, "smstemplate");
+                StringWriter output = new StringWriter();
+                mustache.execute(output, request.getData());
+
+                SmsNotification sms = new SmsNotification();
+                sms.setSenderId(config.getSender().getSmsSenderId());
+                sms.setUsername(config.getSender().getSmsUsername());
+                sms.setPassword(config.getSender().getSmsPassword());
+                sms.setNotification(notif);
+                sms.setDestinationNumber(request.getMobile());
+                sms.setNotificationStatus(NotificationStatus.NEW);
+                sms.setContent(output.toString());
+                smsNotificationDao.save(sms);
+            }
         }
 
         if (StringUtils.hasText(request.getEmail())) {

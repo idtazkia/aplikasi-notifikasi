@@ -14,6 +14,11 @@ public class SmsNotification extends BaseEntity {
     @JoinColumn(name = "id_notification")
     private Notification notification;
 
+    private String senderId;
+    private String username;
+    private String password;
+
+
     @NotNull @NotEmpty
     private String destinationNumber;
 
