@@ -20,6 +20,9 @@ public class EmailNotification extends BaseEntity {
     @NotNull @NotEmpty @Column(name = "mail_to")
     private String to;
 
+    @NotNull @NotEmpty @Column(name = "mail_from")
+    private String from;
+
     @NotNull @NotEmpty
     private String body;
 

@@ -44,7 +44,7 @@ public class NotificationApplicationTests {
 
     @Value("classpath:/json/notification-data.json")
     private Resource notificationData;
-    @Value("classpath:/json/create-notification.json")
+    @Value("classpath:/json/create-notification-tagihan.json")
     private Resource notificationRequest;
 
     @Test

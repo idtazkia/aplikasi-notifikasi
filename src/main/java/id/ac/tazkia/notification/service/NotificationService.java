@@ -92,6 +92,7 @@ public class NotificationService {
             email.setBody(body.toString());
             email.setSubject(subject.toString());
             email.setTo(request.getEmail());
+            email.setFrom(notif.getNotificationConfiguration().getSender().getName());
             emailNotificationDao.save(email);
         }
         return notif;

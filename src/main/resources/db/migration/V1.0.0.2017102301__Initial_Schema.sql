@@ -79,8 +79,9 @@ CREATE TABLE sms_notification (
 
 CREATE TABLE email_notification (
   id                  VARCHAR(36),
-  id_notification     VARCHAR(36) NOT NULL,
-  mail_to                  VARCHAR(255) NOT NULL,
+  id_notification     VARCHAR(36)  NOT NULL,
+  mail_from           VARCHAR(255) NOT NULL,
+  mail_to             VARCHAR(255) NOT NULL,
   subject             VARCHAR(255) NOT NULL,
   body                TEXT        NOT NULL,
   send_time           TIMESTAMP   NOT NULL,

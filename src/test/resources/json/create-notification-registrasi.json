@@ -1,0 +1,17 @@
+{
+  "email" : "endy@muhardin.com",
+  "mobile" : "081298000468",
+  "data" : {
+    "nomor": "12345678",
+    "nama": "Pendaftar 001",
+    "biaya": "101001",
+    "rekening": "BNI Syariah 8031506000600000 a.n Yayasan Tazkia",
+    "keterangan": "Uang Pendaftaran",
+    "namaKontak1": "Sadam",
+    "nomorKontak1": "081234567890",
+    "namaKontak2": "Anwar",
+    "nomorKontak2": "081234567890",
+    "namaKontak3": "Irma",
+    "nomorKontak3": "081234567890"
+  }
+}

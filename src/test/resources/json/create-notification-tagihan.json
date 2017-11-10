@@ -1,0 +1,14 @@
+{
+    "email" : "endy@muhardin.com",
+    "mobile" : "081298000468",
+    "data" : {
+        "nomorTagihan": "03-01-1701-000001",
+        "tanggalTagihan": "17-Aug-1945",
+        "nama": "Tester Siswa 001",
+        "jumlah": "101001",
+        "rekening": "BNI Syariah 8031506000600000 a.n Yayasan Tazkia",
+        "keterangan": "Uang Pendaftaran",
+        "batasPembayaran": "17-Aug-1945",
+        "contactinfo": "081234567890"
+    }
+}
