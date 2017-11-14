@@ -14,7 +14,7 @@ VALUES ('sms-keu-pembayaran', 'keuangan', 'Template SMS Pembayaran',
 
 INSERT INTO template_sms (id, id_sender, description, template_content)
 VALUES ('sms-pmb-registrasi', 'pmb', 'Template SMS Registrasi',
-        'Terima kasih telah melakukan registrasi atas nama {{nama}}. Mohon lakukan pembayaran Rp.{{jumlah}} ke {{rekening}}.Info {{namaKontak1}}-{{nomorKontak1}}');
+        'Terima kasih telah melakukan registrasi atas nama {{nama}} - {{email}}.Kami akan segera menghubungi Anda.Info {{namaKontak1}}-{{nomorKontak1}}');
 
 INSERT INTO template_email (id, id_sender, description, subject, file_location)
 VALUES ('email-keu-tagihan', 'keuangan', 'Template Email Tagihan', 'Tagihan {{deskripsi}}', 'tagihan.html');
@@ -60,6 +60,15 @@ VALUES ('pmb-registrasi-nomor', 'pmb-registrasi', 'nomor', 'Nomor Registrasi', T
 
 INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
 VALUES ('pmb-registrasi-nama', 'pmb-registrasi', 'nama', 'Nama Registrasi', TRUE);
+
+INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('pmb-registrasi-hp', 'pmb-registrasi', 'noHp', 'Nomor Handphone', TRUE);
+
+INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('pmb-registrasi-email', 'pmb-registrasi', 'email', 'Email Pendaftar', TRUE);
+
+INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('pmb-registrasi-sekolah', 'pmb-registrasi', 'sekolah', 'Nama Sekolah Asal', TRUE);
 
 INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
 VALUES ('pmb-registrasi-biaya', 'pmb-registrasi', 'biaya', 'Biaya Registrasi', TRUE);
