@@ -20,23 +20,23 @@ import java.util.Optional;
 public class KafkaListeners {
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaListeners.class);
 
-    @Value("${konfigurasi.registrasi}") private String idKonfigurasiNotifikasi;
-
     @Autowired private NotificationService notificationService;
     @Autowired private NotificationConfigurationDao notificationConfigurationDao;
     @Autowired private ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "${kafka.topic.registrasi}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${kafka.topic.notification}", groupId = "${spring.kafka.consumer.group-id}")
     public void notifikasiRegistrasi(String message){
         try {
+            NotificationRequest request = objectMapper.readValue(message, NotificationRequest.class);
+
             Optional<NotificationConfiguration> config
-                    = notificationConfigurationDao.findById(idKonfigurasiNotifikasi);
+                    = notificationConfigurationDao.findById(request.getKonfigurasi());
             if(!config.isPresent()){
                 throw new IllegalStateException("Konfigurasi Notifikasi Registrasi PMB tidak tersedia");
             }
 
             NotificationConfiguration konfigurasi = config.get();
-            NotificationRequest request = objectMapper.readValue(message, NotificationRequest.class);
+
             List<String> missingVars = new ArrayList<>();
             for (NotificationConfigurationVariable v :config.get().getVariables()) {
                 if (!request.getData().keySet().contains(v.getVariableName())) {

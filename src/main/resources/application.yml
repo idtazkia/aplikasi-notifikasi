@@ -24,13 +24,10 @@ template:
 
 kafka:
   topic:
-    registrasi: registrasi
+    notification: notification
     email: mail-notification
     sms: sms-notification
 
 logging:
   level:
     id.ac.tazkia: DEBUG
-
-konfigurasi:
-  registrasi: pmb-registrasi

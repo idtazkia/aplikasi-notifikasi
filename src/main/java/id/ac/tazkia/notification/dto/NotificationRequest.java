@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Data
 public class NotificationRequest {
+    private String konfigurasi;
     private String email;
     private String mobile;
     @NotNull @NotEmpty
