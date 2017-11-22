@@ -9,22 +9,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="https://image.flaticon.com/icons/png/512/305/305920.png">
 
-    <title>APLIKASI NOTIFIKASI</title>
+    <title>Aplikasi Notifikasi</title>
 
     <!-- Bootstrap core CSS -->
 
     <link th:href="@{/dist/css/bootstrap.min.css}" rel="stylesheet">
-
-    <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Icons -->
     <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
 
 </head>
 <body>
@@ -38,12 +39,16 @@
             <ul class="nav nav-pills flex-column sidebar-nav">
                 <li class="nav-item"><a class="nav-link" th:href="@{/index}"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/notifikasi/form}"><em class="fa fa-exclamation-circle"></em> Notifikasi</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/sender/form}"><em class="fa fa-paper-plane-o"></em> Sender</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/sender/list}"><em class="fa fa-paper-plane-o"></em> Sender</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/sms/form}"><em class="fa fa-mobile"></em> Template SMS</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/email/form}"><em class="fa fa-envelope-o "></em> Template Email</a></li>
             </ul>
 
+
+            <!--SIGNOUT-->
             <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
+
+
 
         <main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
             <header class="page-header row justify-center">
