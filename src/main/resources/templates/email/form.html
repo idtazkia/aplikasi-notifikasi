@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>EMAIL</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container-fluid" id="wrapper">
+
+
+        <section class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-block">
+                        <h3 class="card-title">E-mail</h3>
+
+                        <div class="dropdown card-title-btn-container">
+                            <a th:href="@{/email/list}" class="btn btn-sm btn-subtle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-arrow-left"></em></a>
+                        </div>
+
+                        <h6 class="card-subtitle mb-2 text-muted">Subtitle</h6>
+
+                        <form action="#" th:action="@{/email/form}" th:object="${templateEmail}" method="post">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding">Sender</label>
+
+                                    <div class="col-12 no-padding">
+                                        <select class="form-control" name="sender">
+                                            <option value="">a</option>
+                                            <option value=""></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding" >Subjek</label>
+
+                                    <div class="col-12 no-padding">
+                                        <input id="subject" name="subject" type="text" placeholder="Sub" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding" >Keterangan</label>
+
+                                    <div class="col-12 no-padding">
+                                        <input id="description" name="description" type="text" placeholder="Ket" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding" >File</label>
+
+                                    <div class="col-12 no-padding">
+                                        <input id="fileLocation" name="fileLocation" type="text" placeholder="Browse ..." class="form-control">
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div class="form-group">
+                                    <div class="col-12 widget-right no-padding">
+                                        <button type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </section>
+
+    </div>
+</section>
+</body>
+</html>

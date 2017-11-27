@@ -2,6 +2,7 @@ package id.ac.tazkia.notification.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,12 +14,12 @@ public class TemplateEmail extends BaseEntity {
     @ManyToOne @JoinColumn(name = "id_sender")
     private Sender sender;
 
-    @NotNull
+    @NotNull@Column
     private String subject;
 
-    @NotNull
+    @NotNull@Column
     private String description;
 
-    @NotNull
+    @NotNull@Column
     private String fileLocation;
 }
