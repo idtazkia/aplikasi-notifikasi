@@ -577,3 +577,5 @@ input[type=checkbox]:checked + label {
 textarea {
   resize: none;
 }
+
+li { cursor: pointer; }

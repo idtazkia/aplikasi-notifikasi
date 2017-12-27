@@ -4,7 +4,7 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="utf-8">
-    <title>EMAIL</title>
+    <title>SMS</title>
 
 </head>
 <body>
@@ -16,50 +16,43 @@
             <div class="col-sm-12 col-md-6">
                 <div class="card mb-4">
                     <div class="card-block">
-                        <h3 class="card-title">E-mail</h3>
-
+                        <h3 class="card-title">SMS</h3>
                         <div class="dropdown card-title-btn-container">
-                            <a th:href="@{/email/list}" class="btn btn-sm btn-subtle" type="button"  aria-haspopup="true" aria-expanded="false"><em class="fa fa-arrow-left"></em></a>
+                            <a th:href="@{/sms/list}" class="btn btn-sm btn-subtle" type="button"  aria-haspopup="true" aria-expanded="false"><em class="fa fa-arrow-left"></em></a>
                         </div>
 
                         <h6 class="card-subtitle mb-2 text-muted">Subtitle</h6>
 
-                        <form action="#" th:action="@{/email/form}" th:object="${templateEmail}" method="post">
+                        <form action="#" th:action="@{/sms/form}" th:object="${templateSms}" method="post">
                             <fieldset>
+                                <!-- Name input-->
                                 <div class="form-group">
                                     <label class="col-12 control-label no-padding">Sender</label>
 
                                     <div class="col-12 no-padding">
                                         <select class="form-control" name="sender">
-                                            <option value="">a</option>
+                                            <option value=""></option>
                                             <option value=""></option>
 
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="col-12 control-label no-padding" >Subjek</label>
-
-                                    <div class="col-12 no-padding">
-                                        <input id="subject" name="subject" type="text" placeholder="Sub" class="form-control">
-                                    </div>
-                                </div>
-
-
+                                <!-- Email input-->
                                 <div class="form-group">
                                     <label class="col-12 control-label no-padding" >Keterangan</label>
 
                                     <div class="col-12 no-padding">
-                                        <input id="description" name="description" type="text" placeholder="Ket" class="form-control">
+                                        <input id="description" name="description" type="text" placeholder="Sender ID" class="form-control">
                                     </div>
                                 </div>
 
+                                <!-- Message body -->
                                 <div class="form-group">
-                                    <label class="col-12 control-label no-padding" >File</label>
+                                    <label class="col-12 control-label no-padding" >Content</label>
 
                                     <div class="col-12 no-padding">
-                                        <input id="fileLocation" name="fileLocation" type="text" placeholder="Browse ..." class="form-control">
+                                        <textarea class="form-control" id="templateContent" name="content" placeholder="Please enter your message here..." rows="5"></textarea>
                                     </div>
                                 </div>
 

@@ -4,7 +4,7 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>List Sender</title>
+    <title>List TempSMS</title>
 </head>
 <body>
 <section layout:fragment="content" class="tables">
@@ -12,38 +12,40 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
-                    <a th:href="@{/sender/form}" class="btn btn-lg btn-primary ">+ Sender</a>
+                    <a th:href="@{/sms/form}" class="btn btn-lg btn-primary ">+ Template Sms</a>
 
                 </div>
             </div>
         </div>
-
-<br>
+        <br>
         <div class="row">
             <div class="col-lg-10">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">List Sender</h3>
+                        <h3 class="h4">List Template SMS</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-hover ">
+                        <table class="table table-striped table-hover table-responsive">
                             <thead>
                             <tr >
                                 <th>#</th>
-                                <th>Nama</th>
-                                <th>SMS Sender ID</th>
-                                <th>SMS Username</th>
-                                <th>SMS Password</th>
+                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sender</th>
+                                <th>Description</th>
+                                <th>Template Content</th>
                                 <th>&nbsp;</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="sd : ${daftarSender}">
+                            <tr th:each="ts : ${daftarTemplateSms}">
                                 <td></td>
-                                <td th:text="${sd.name}"></td>
-                                <td th:text="${sd.smsSenderId}" ></td>
-                                <td th:text="${sd.smsUsername}" ></td>
-                                <td th:text="${sd.smsPassword}"></td>
+                                <td>
+                                    <ul class="fa-ul">
+                                        <u><b>SENDER :</b></u><li th:text="${ts.sender.name}"> SENDER :</li>
+                                        <u><b>SENDER ID :</b></u><li th:text="${ts.sender.smsSenderId}"></li>
+                                    </ul>
+                                </td>
+                                <td th:text="${ts.description}" ></td>
+                                <td th:text="${ts.templateContent}"></td>
                                 <td>
                                     <a href="#" class="fa fa-trash"></a>
                                 </td>
