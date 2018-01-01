@@ -24,14 +24,14 @@ public class KafkaListeners {
     @Autowired private ObjectMapper objectMapper;
 
     @KafkaListener(topics = "${kafka.topic.notification}", groupId = "${spring.kafka.consumer.group-id}")
-    public void notifikasiRegistrasi(String message){
+    public void terimaNotifikasi(String message){
         try {
             NotificationRequest request = objectMapper.readValue(message, NotificationRequest.class);
 
             Optional<NotificationConfiguration> config
                     = notificationConfigurationDao.findById(request.getKonfigurasi());
             if(!config.isPresent()){
-                throw new IllegalStateException("Konfigurasi Notifikasi Registrasi PMB tidak tersedia");
+                throw new IllegalStateException("Konfigurasi Notifikasi "+request.getKonfigurasi()+" tidak tersedia");
             }
 
             NotificationConfiguration konfigurasi = config.get();
@@ -44,7 +44,7 @@ public class KafkaListeners {
             }
 
             if(!missingVars.isEmpty()){
-                LOGGER.warn("Notifikasi PMB tidak dapat dikirim, variabel berikut tidak terisi : [{}]", missingVars.toString());
+                LOGGER.warn("Notifikasi tidak dapat dikirim, variabel berikut tidak terisi : [{}]", missingVars.toString());
                 return;
             }
 
