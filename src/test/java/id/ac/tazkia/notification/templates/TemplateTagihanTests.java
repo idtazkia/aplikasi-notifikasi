@@ -1,5 +1,6 @@
 package id.ac.tazkia.notification.templates;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import org.junit.Test;
@@ -21,8 +22,11 @@ public class TemplateTagihanTests {
     @Autowired
     private MustacheFactory mustacheFactory;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Test
-    public void testGenerateEmailTagihan(){
+    public void testGenerateEmailTagihan() throws Exception {
         String template = "templates/email/keuangan/tagihan.html";
         Mustache mustache = mustacheFactory.compile(template);
         StringWriter body = new StringWriter();
@@ -32,20 +36,14 @@ public class TemplateTagihanTests {
         data.put("nomor", "1234567890");
         data.put("nilai", "500.000");
 
-        List<Map<String, String>> daftarRekening = new ArrayList<>();
-        Map<String, String> bni = new HashMap<>();
-        bni.put("bank", "BNI Syariah");
-        bni.put("nomorRekening", "1234567890");
-        bni.put("namaRekening", "Formulir - Endy Muhardin");
-        daftarRekening.add(bni);
-        data.put("daftarRekening", daftarRekening);
+        data.put("bank1", "BNI Syariah");
+        data.put("nomorRekening1", "1234567890");
+        data.put("namaRekening1", "Endy Muhardin - Formulir");
 
-        List<Map<String, String>> daftarKontak = new ArrayList<>();
-        Map<String, String> humas = new HashMap<>();
-        humas.put("nomorKontak", "081234567890");
-        humas.put("namaKontak", "humas@tazkia.ac.id");
-        daftarKontak.add(humas);
-        data.put("daftarKontak", daftarKontak);
+        data.put("nomorKontak1", "081234567890");
+        data.put("namaKontak1", "humas@tazkia.ac.id");
+
+        System.out.println("Data : "+objectMapper.writeValueAsString(data));
 
         mustache.execute(body, data);
         System.out.println(body);
