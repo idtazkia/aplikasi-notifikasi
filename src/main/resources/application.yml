@@ -13,7 +13,7 @@ spring:
     serialization:
       indent-output: true
   kafka:
-      bootstrap-servers: kafka.tazkia.ac.id:9092
+      bootstrap-servers: kafka2.tazkia.ac.id:9092
       consumer:
         group-id: appnotification
         auto-offset-reset: earliest
@@ -24,6 +24,7 @@ template:
 
 kafka:
   topic:
+    notification: notification
     email: mail-notification
     sms: sms-notification
 
