@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}">
+<head>
+	<meta charset="utf-8">
+	<title>Sender</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+<div class="container-fluid" id="wrapper">
+
+
+					<section class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="card mb-4">
+								<div class="card-block">
+									<h3 class="card-title">Sender</h3>
+
+									<div class="dropdown card-title-btn-container">
+										<a th:href="@{/sender/list}" class="btn btn-sm btn-subtle" type="button" aria-haspopup="true" aria-expanded="false"><em class="fa fa-arrow-left"></em></a>
+									</div>
+
+									<h6 class="card-subtitle mb-2 text-muted">Subtitle</h6>
+
+									<form action="#" th:action="@{/sender/form}" th:object="${sender}" method="post">
+									<fieldset>
+											<!-- Name input-->
+											<div class="form-group">
+												<label class="col-12 control-label no-padding">Nama</label>
+
+												<div class="col-12 no-padding">
+													<input id="name" name="name" type="text" placeholder="Silahkan masukan nama" class="form-control">
+												</div>
+											</div>
+
+											<!-- Email input-->
+											<div class="form-group">
+												<label class="col-12 control-label no-padding" >SMS Sender ID</label>
+
+												<div class="col-12 no-padding">
+													<input id="sms_sender_id" name="smsSenderId" type="text" placeholder="Sender ID" class="form-control">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-12 control-label no-padding" >SMS Username</label>
+
+												<div class="col-12 no-padding">
+													<input id="sms_username" name="smsUsername" type="text" placeholder="Username" class="form-control">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-12 control-label no-padding" >SMS Password</label>
+
+												<div class="col-12 no-padding">
+													<input id="sms_password" name="smsPassword" type="text" placeholder="Password" class="form-control">
+												</div>
+											</div>
+
+											<!-- Form actions -->
+											<div class="form-group">
+												<div class="col-12 widget-right no-padding">
+													<button type="submit"   class="btn btn-primary btn-md float-right">Submit</button>
+
+												</div>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+
+
+
+
+						</div>
+					</section>
+
+</div>
+</section>
+</body>
+</html>

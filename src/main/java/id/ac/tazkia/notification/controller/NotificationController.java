@@ -21,6 +21,8 @@ import java.util.*;
 @RequestMapping("/api/client")
 public class NotificationController {
 
+
+
     @Autowired private NotificationConfigurationDao notificationConfigurationDao;
     @Autowired private NotificationService notificationService;
     @Autowired private ObjectMapper objectMapper;
@@ -75,5 +77,9 @@ public class NotificationController {
         responseData.put("message", message);
         return new ResponseEntity<>(responseData, badRequest);
     }
+
+
+
+
 
 }

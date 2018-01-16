@@ -16,6 +16,10 @@ INSERT INTO template_sms (id, id_sender, description, template_content)
 VALUES ('sms-pmb-registrasi', 'pmb', 'Template SMS Registrasi',
         'Terima kasih telah melakukan registrasi atas nama {{nama}} - {{email}}.Kami akan segera menghubungi Anda.Info {{namaKontak1}}-{{nomorKontak1}}');
 
+INSERT INTO template_sms (id, id_sender, description, template_content)
+VALUES ('sms-pmb-resetpassword', 'pmb', 'Template SMS Reset Password',
+        'Permohonan reset password anda {{nama}} - {{email}}.Kami akan segera menghubungi Anda.Info {{namaKontak1}}-{{nomorKontak1}}');
+
 INSERT INTO template_email (id, id_sender, description, subject, file_location)
 VALUES ('email-keu-tagihan', 'keuangan', 'Template Email Tagihan', 'Tagihan {{deskripsi}}', 'tagihan.html');
 
@@ -24,6 +28,9 @@ VALUES ('email-keu-pembayaran', 'keuangan', 'Template Email Pembayaran', 'Pembay
 
 INSERT INTO template_email (id, id_sender, description, subject, file_location)
 VALUES ('email-pmb-registrasi', 'pmb', 'Template Registrasi Awal PMB', 'Registrasi a.n {{nama}}', 'registrasi.html');
+
+INSERT INTO template_email (id, id_sender, description, subject, file_location)
+VALUES ('email-pmb-resetpassword', 'pmb', 'Template Reset Password', 'Username Password a.n {{nama}}', 'resetpassword.html');
 
 INSERT INTO notification_configuration (id, id_sender, id_template_email, id_template_sms, configuration_name, description)
 VALUES ('keu-tagihan', 'keuangan', 'email-keu-tagihan', 'sms-keu-tagihan', 'Tagihan', 'Notifikasi tagihan uang sekolah');

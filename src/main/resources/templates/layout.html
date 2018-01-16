@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="https://image.flaticon.com/icons/png/512/305/305920.png">
+
+    <title>Aplikasi Notifikasi</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link th:href="@{/dist/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Icons -->
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="container-fluid" id="wrapper">
+    <section class="row">
+        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+            <h1 class="site-title"><a th:href="@{/index}"><em class="fa fa-bell-o"></em> Aplikasi Notifikasi</a></h1>
+
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+
+            <ul class="nav nav-pills flex-column sidebar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/sender/list}"><em class="fa fa-paper-plane-o"></em> Sender</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/notifikasikonfigurasi/list}"><em class="fa fa-exclamation-circle"></em> Notifikasi</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/sms/list}"><em class="fa fa-mobile"></em> Template SMS</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/email/list}"><em class="fa fa-envelope-o "></em> Template Email</a></li>
+            </ul>
+
+
+            <!--SIGNOUT-->
+            <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
+
+
+
+        <main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header row justify-center">
+                    <div class="col-md-6 col-lg-8" >
+                        <h1 class="float-left text-center text-md-left">Dashboard</h1>
+                    </div>
+
+                    <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle"  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://tazkia.ac.id/images/logo-tazkia-1.png" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+
+                        <div class="username mt-1">
+                            <h4 class="mb-1">Client001</h4>
+
+                            <h6 class="text-muted">Super Admin</h6>
+                        </div>
+                    </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
+                            <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>
+
+                        </div>
+
+                        <div class="clear"></div>
+                </header>
+                <!-- content start -->
+                <div layout:fragment="content">
+                    <p>Page content goes here</p>
+                </div>
+                <!-- content end -->
+
+                <!-- Page Footer-->
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>STEI Tazkia &copy; 2017-2027</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </main>
+    </section>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+</body>
+</html>

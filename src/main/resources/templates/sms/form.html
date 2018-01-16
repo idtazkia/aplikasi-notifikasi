@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>SMS</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container-fluid" id="wrapper">
+
+
+        <section class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-block">
+                        <h3 class="card-title">SMS</h3>
+                        <div class="dropdown card-title-btn-container">
+                            <a th:href="@{/sms/list}" class="btn btn-sm btn-subtle" type="button"  aria-haspopup="true" aria-expanded="false"><em class="fa fa-arrow-left"></em></a>
+                        </div>
+
+                        <h6 class="card-subtitle mb-2 text-muted">Subtitle</h6>
+
+                        <form action="#" th:action="@{/sms/form}" th:object="${templateSms}" method="post">
+                            <fieldset>
+                                <!-- Name input-->
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding">Sender</label>
+
+                                    <div class="col-12 no-padding">
+                                        <select class="form-control" name="sender">
+                                            <option value=""></option>
+                                            <option value=""></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Email input-->
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding" >Keterangan</label>
+
+                                    <div class="col-12 no-padding">
+                                        <input id="description" name="description" type="text" placeholder="Sender ID" class="form-control">
+                                    </div>
+                                </div>
+
+                                <!-- Message body -->
+                                <div class="form-group">
+                                    <label class="col-12 control-label no-padding" >Content</label>
+
+                                    <div class="col-12 no-padding">
+                                        <textarea class="form-control" id="templateContent" name="content" placeholder="Please enter your message here..." rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div class="form-group">
+                                    <div class="col-12 widget-right no-padding">
+                                        <button type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </section>
+
+    </div>
+</section>
+</body>
+</html>

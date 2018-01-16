@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>List Notifikasi Konfigurasi</title>
+</head>
+<body>
+<section layout:fragment="content" class="tables">
+    <div class="container-fluid" id="wrapper">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <a th:href="@{/notifikasikonfigurasi/form}" class="btn btn-lg btn-primary ">+ Notifikasi Konfigurasi</a>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">List Sender</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover table-responsive">
+                            <thead>
+                            <tr >
+                                <th>#</th>
+                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sender</th>
+                                <th>Template SMS</th>
+                                <th>Tempate Email</th>
+                                <th>Nama Konfig</th>
+                                <th>Keterangan</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="nc : ${daftarNotifikasiKonfigurasi}">
+                                <td></td>
+                                <td>
+                                    <ul>
+                                        <li><u><b>SENDER </b></u></li><span th:text="${nc.sender.name}"></span>
+                                        <li><u><b>SENDER ID</b></u></li><span th:text="${nc.sender.smsSenderId}"></span>
+                                        <li><u><b>USERNAME </b></li></u><span th:text="${nc.sender.smsUsername}"></span>
+                                        <li><u><b>PASSWORD </b></li></u><span th:text="${nc.sender.smsPassword}"></span>
+                                    </ul>
+                                </td>
+                                <td th:text="${nc.templateSms}" ></td>
+                                <td th:text="${nc.templateEmail}" ></td>
+                                <td th:text="${nc.configurationName}"></td>
+                                <td th:text="${nc.description}"></td>
+                                <td>
+                                    <a href="#" class="fa fa-trash"></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</section>
+</body>
+</html>

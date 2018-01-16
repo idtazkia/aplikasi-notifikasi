@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class UserDetailsService implements UserDetailsRepository {
 
     @Autowired private UserPasswordDao userPasswordDao;
-    @Autowired private PasswordEncoder passwordEncoder;
+    //@Autowired private PasswordEncoder passwordEncoder;
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
