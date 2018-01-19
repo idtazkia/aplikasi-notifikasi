@@ -1,14 +1,16 @@
 {
-    "email" : "endy@muhardin.com",
-    "mobile" : "081298000468",
+    "email" : "haffizh@tazkia.ac.id",
+    "mobile" : "085714054669",
     "data" : {
         "nomorTagihan": "03-01-1701-000001",
         "tanggalTagihan": "17-Aug-1945",
         "nama": "Tester Siswa 001",
         "jumlah": "101001",
-        "rekening": "BNI Syariah 8031506000600000 a.n Yayasan Tazkia",
+        "rekening": "BNI 8031506000600000 / BSM 1234567890",
+        "rekeningFull": "<ul><li>BNI Syariah 8031506000600000</li><li>BSM 1234567890</li></ul>",
         "keterangan": "Uang Pendaftaran",
         "batasPembayaran": "17-Aug-1945",
-        "contactinfo": "081234567890"
+        "contactinfo": "081234567890",
+        "contactinfoFull": "<ul style='list-style-type:none;text-decoration:none;'><li>Furqon : 081234567890</li><li>finance@tazkia.ac.id</li></ul>"
     }
 }

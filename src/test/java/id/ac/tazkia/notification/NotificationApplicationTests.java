@@ -45,7 +45,7 @@ public class NotificationApplicationTests {
     @Value("classpath:/json/notification-data.json")
     private Resource notificationData;
     @Value("classpath:/json/create-notification-tagihan.json")
-    private Resource notificationRequest;
+    private Resource dataNotifikasiTagihan;
 
     @Test
     public void testRun(){
@@ -84,10 +84,12 @@ public class NotificationApplicationTests {
     }
 
     @Test
-    public void testCreateNotification() throws IOException {
-        NotificationRequest request = objectMapper.readValue(notificationRequest.getFile(), NotificationRequest.class);
+    public void testCreateNotification() throws Exception {
+        NotificationRequest request = objectMapper.readValue(dataNotifikasiTagihan.getFile(), NotificationRequest.class);
         NotificationConfiguration config = notificationConfigurationDao.findById("keu-tagihan").get();
         notificationService.create(config, request);
+        // tunggu 20 detik supaya email dan sms terkirim
+        Thread.sleep(20 * 1000);
     }
 
     @Test
