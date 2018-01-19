@@ -3,8 +3,8 @@ spring:
     name: notification
   datasource:
     url: jdbc:postgresql://localhost/notifikasidb
-    username: ittazkia
-    password: ittazkia
+    username: notifikasiuser
+    password: notifikasi01
   jpa:
     hibernate:
       ddl-auto: validate
