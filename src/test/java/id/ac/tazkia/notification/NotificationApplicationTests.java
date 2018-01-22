@@ -45,7 +45,11 @@ public class NotificationApplicationTests {
     @Value("classpath:/json/notification-data.json")
     private Resource notificationData;
     @Value("classpath:/json/create-notification-tagihan.json")
-    private Resource notificationRequest;
+    private Resource dataNotifikasiTagihan;
+    @Value("classpath:/json/create-notification-resetpassword.json")
+    private Resource dataNotifikasiPassword;
+    @Value("classpath:/json/create-notification-pembayaran.json")
+    private Resource dataNotifikasiPembayaran;
 
     @Test
     public void testRun(){
@@ -83,11 +87,36 @@ public class NotificationApplicationTests {
         Assert.assertNotNull(n.getId());
     }
 
+//Tagihan
     @Test
-    public void testCreateNotification() throws IOException {
-        NotificationRequest request = objectMapper.readValue(notificationRequest.getFile(), NotificationRequest.class);
+    public void testCreateNotification() throws Exception {
+        NotificationRequest request = objectMapper.readValue(dataNotifikasiTagihan.getFile(), NotificationRequest.class);
         NotificationConfiguration config = notificationConfigurationDao.findById("keu-tagihan").get();
         notificationService.create(config, request);
+        // tunggu 20 detik supaya email dan sms terkirim
+        Thread.sleep(20 * 1000);
+    }
+
+
+//Pembayaran
+    @Test
+    public void testCreateNotificationPembayaran() throws Exception {
+        NotificationRequest request = objectMapper.readValue(dataNotifikasiPembayaran.getFile(), NotificationRequest.class);
+        NotificationConfiguration config = notificationConfigurationDao.findById("keu-pembayaran").get();
+        notificationService.create(config, request);
+        // tunggu 20 detik supaya email dan sms terkirim
+        Thread.sleep(20 * 1000);
+    }
+
+
+//Reset Password
+    @Test
+    public void testCreateNotificationPassword() throws Exception {
+        NotificationRequest request = objectMapper.readValue(dataNotifikasiPassword.getFile(), NotificationRequest.class);
+        NotificationConfiguration config = notificationConfigurationDao.findById("pmb-resetpassword").get();
+        notificationService.create(config, request);
+        // tunggu 20 detik supaya email dan sms terkirim
+        Thread.sleep(20 * 1000);
     }
 
     @Test
