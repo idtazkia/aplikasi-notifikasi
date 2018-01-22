@@ -50,7 +50,7 @@ public class NotificationApplicationTests {
     private Resource dataNotifikasiPassword;
     @Value("classpath:/json/create-notification-pembayaran.json")
     private Resource dataNotifikasiPembayaran;
-    @Value("classpath:/json/create-notification-registrasi-selesai.json")
+    @Value("classpath:/json/create-notification-registrasi-isi-data.json")
     private Resource getDataNotifikasiRegistrasiSelesai;
 
     @Test
@@ -93,7 +93,7 @@ public class NotificationApplicationTests {
     @Test
     public void testCreateNotificationRegistrasiSelesai() throws Exception {
         NotificationRequest request = objectMapper.readValue(getDataNotifikasiRegistrasiSelesai.getFile(), NotificationRequest.class);
-        NotificationConfiguration config = notificationConfigurationDao.findById("pmb-registrasi-selesai").get();
+        NotificationConfiguration config = notificationConfigurationDao.findById("pmb-registrasi-isi-data").get();
         notificationService.create(config, request);
         // tunggu 20 detik supaya email dan sms terkirim
         Thread.sleep(20 * 1000);
