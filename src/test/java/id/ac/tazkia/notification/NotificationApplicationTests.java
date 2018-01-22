@@ -46,6 +46,8 @@ public class NotificationApplicationTests {
     private Resource notificationData;
     @Value("classpath:/json/create-notification-tagihan.json")
     private Resource dataNotifikasiTagihan;
+    @Value("classpath:/json/create-notification-resetpassword.json")
+    private Resource dataNotifikasiPassword;
 
     @Test
     public void testRun(){
@@ -87,6 +89,16 @@ public class NotificationApplicationTests {
     public void testCreateNotification() throws Exception {
         NotificationRequest request = objectMapper.readValue(dataNotifikasiTagihan.getFile(), NotificationRequest.class);
         NotificationConfiguration config = notificationConfigurationDao.findById("keu-tagihan").get();
+        notificationService.create(config, request);
+        // tunggu 20 detik supaya email dan sms terkirim
+        Thread.sleep(20 * 1000);
+    }
+
+//Reset Password
+    @Test
+    public void testCreateNotificationPassword() throws Exception {
+        NotificationRequest request = objectMapper.readValue(dataNotifikasiPassword.getFile(), NotificationRequest.class);
+        NotificationConfiguration config = notificationConfigurationDao.findById("pmb-resetpassword").get();
         notificationService.create(config, request);
         // tunggu 20 detik supaya email dan sms terkirim
         Thread.sleep(20 * 1000);
