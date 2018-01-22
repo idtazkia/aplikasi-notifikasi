@@ -24,10 +24,13 @@ template:
 
 kafka:
   topic:
-    notification: notification
+    notification: notification-123
     email: mail-notification
     sms: sms-notification
 
 logging:
   level:
     id.ac.tazkia: DEBUG
+
+server:
+  port: 20000

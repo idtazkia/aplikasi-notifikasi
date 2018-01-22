@@ -38,6 +38,9 @@ public class KafkaListeners {
 
             List<String> missingVars = new ArrayList<>();
             for (NotificationConfigurationVariable v :config.get().getVariables()) {
+                if (!v.getRequired()) {
+                    continue;
+                }
                 if (!request.getData().keySet().contains(v.getVariableName())) {
                     missingVars.add(v.getVariableName());
                 }

@@ -1,6 +1,14 @@
+-- Data Tagihan
+
+INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('keu-tagihan-nohp', 'keu-tagihan', 'noHp', 'Nomor Telepon', FALSE);
+
+INSERT INTO notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('keu-tagihan-email', 'keu-tagihan', 'email', 'Email', FALSE);
+
 --Konfirmasi Pembayaran
 
-update template_email set subject = 'Terimakasih pembayaran {{keterangan}} telah berhasil.'
+update template_email set subject = 'Pembayaran {{keterangan}} berhasil'
 where id ='email-keu-pembayaran';
 
 update template_sms set template_content =
@@ -31,6 +39,12 @@ VALUES ('keu-pembayaran-keterangan', 'keu-pembayaran', 'keterangan', 'Keterangan
 
 insert into notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
 VALUES ('keu-pembayaran-rekening', 'keu-pembayaran', 'rekening', 'Rekening Tujuan', TRUE);
+
+insert into notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('keu-pembayaran-referensi', 'keu-pembayaran', 'referensi', 'Referensi Bank', TRUE);
+
+insert into notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
+VALUES ('keu-pembayaran-waktu', 'keu-pembayaran', 'waktu', 'Waktu Transaksi', TRUE);
 
 insert into notification_configuration_variable (id, id_notification_configuration, variable_name, description, required)
 VALUES ('keu-pembayaran-contact', 'keu-pembayaran', 'contactinfo', 'Kontak untuk menghubungi bagian keuangan', TRUE);

@@ -19,4 +19,7 @@ public class NotificationConfigurationVariable extends BaseEntity {
     private String variableName;
 
     private String description;
+
+    @NotNull
+    private Boolean required;
 }
