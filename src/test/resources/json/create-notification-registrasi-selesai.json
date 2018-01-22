@@ -1,0 +1,18 @@
+{
+  "email" : "haffizh@tazkia.ac.id",
+  "mobile" : "085714054669",
+  "data" : {
+    "nomor": "12345678",
+    "nama": "Pendaftar 001",
+    "namaAyah":"Firman Aini",
+    "namaIbu":"Iis Yuliani",
+    "noHp":"085714054669",
+    "sekolah":"SMK WIKRAMA BOGOR",
+    "namaKontak1": "Sadam",
+    "nomorKontak1": "081234567890",
+    "namaKontak2": "Anwar",
+    "nomorKontak2": "081234567890",
+    "namaKontak3": "Irma",
+    "nomorKontak3": "081234567890"
+  }
+}
