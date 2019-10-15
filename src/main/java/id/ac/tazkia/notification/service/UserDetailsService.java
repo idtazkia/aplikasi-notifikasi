@@ -7,9 +7,8 @@ import id.ac.tazkia.notification.entity.Role;
 import id.ac.tazkia.notification.entity.User;
 import id.ac.tazkia.notification.entity.UserPassword;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -19,10 +18,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserDetailsService implements UserDetailsRepository {
+public class UserDetailsService implements ReactiveUserDetailsService {
 
     @Autowired private UserPasswordDao userPasswordDao;
-    @Autowired private PasswordEncoder passwordEncoder;
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
