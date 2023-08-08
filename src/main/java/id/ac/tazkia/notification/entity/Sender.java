@@ -1,10 +1,9 @@
 package id.ac.tazkia.notification.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Data @Entity
 public class Sender extends BaseEntity {

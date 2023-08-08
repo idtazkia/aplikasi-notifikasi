@@ -1,7 +1,8 @@
 package id.ac.tazkia.notification.dao;
 
-import id.ac.tazkia.notification.entity.TemplateEmail;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TemplateEmailDao extends PagingAndSortingRepository<TemplateEmail, String>{
+import id.ac.tazkia.notification.entity.TemplateEmail;
+
+public interface TemplateEmailDao extends JpaRepository<TemplateEmail, String>{
 }

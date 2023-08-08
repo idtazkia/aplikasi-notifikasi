@@ -1,24 +1,22 @@
 package id.ac.tazkia.notification;
 
-import id.ac.tazkia.notification.dao.UserPasswordDao;
-import id.ac.tazkia.notification.entity.Permission;
-import id.ac.tazkia.notification.entity.Role;
-import id.ac.tazkia.notification.entity.User;
-import id.ac.tazkia.notification.entity.UserPassword;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@RunWith(SpringRunner.class)
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import id.ac.tazkia.notification.dao.UserPasswordDao;
+import id.ac.tazkia.notification.entity.Permission;
+import id.ac.tazkia.notification.entity.Role;
+import id.ac.tazkia.notification.entity.User;
+import id.ac.tazkia.notification.entity.UserPassword;
+
 @SpringBootTest
 public class UserPasswordDaoTests {
     @Autowired private UserPasswordDao userPasswordDao;
@@ -26,7 +24,7 @@ public class UserPasswordDaoTests {
     @Test
     public void testSearchUserByUsername(){
         Optional<UserPassword> up = userPasswordDao.findByUserUsername("client001");
-        Assert.assertTrue(up.isPresent());
+        Assertions.assertTrue(up.isPresent());
 
         int countPermission = up
                 .map(UserPassword::getUser)
@@ -35,7 +33,7 @@ public class UserPasswordDaoTests {
                 .map(Set::size)
                 .orElse(0);
 
-        Assert.assertTrue(1 == countPermission);
+        Assertions.assertTrue(1 == countPermission);
 
         List<String> authorities = up
                 .map(UserPassword::getUser)

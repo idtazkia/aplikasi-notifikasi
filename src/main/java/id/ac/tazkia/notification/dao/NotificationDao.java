@@ -1,7 +1,8 @@
 package id.ac.tazkia.notification.dao;
 
-import id.ac.tazkia.notification.entity.Notification;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NotificationDao extends PagingAndSortingRepository<Notification, String>{
+import id.ac.tazkia.notification.entity.Notification;
+
+public interface NotificationDao extends JpaRepository<Notification, String>{
 }

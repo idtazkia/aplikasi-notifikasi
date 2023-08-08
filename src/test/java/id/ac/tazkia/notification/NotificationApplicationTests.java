@@ -1,7 +1,24 @@
 package id.ac.tazkia.notification;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.util.FileCopyUtils;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import id.ac.tazkia.notification.dao.NotificationConfigurationDao;
 import id.ac.tazkia.notification.dao.NotificationDao;
 import id.ac.tazkia.notification.dao.SenderDao;
@@ -11,25 +28,7 @@ import id.ac.tazkia.notification.entity.NotificationConfiguration;
 import id.ac.tazkia.notification.entity.Sender;
 import id.ac.tazkia.notification.service.NotificationSenderService;
 import id.ac.tazkia.notification.service.NotificationService;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.FileCopyUtils;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @Sql({"classpath:sql/delete-sample.sql", "classpath:sql/notification-sample.sql"})
 public class NotificationApplicationTests {
@@ -61,32 +60,32 @@ public class NotificationApplicationTests {
     @Test
     public void testSenderDao(){
         Page<Sender> result = senderDao.findAll(PageRequest.of(0, 3));
-        Assert.assertTrue(result.getTotalPages() == 2);
+        Assertions.assertTrue(result.getTotalPages() == 2);
     }
 
     @Test
     public void testRetrieveNotification(){
         Page<Notification> result = notificationDao.findAll(PageRequest.of(0, 10));
-        Assert.assertTrue(result.getTotalElements() > 0);
+        Assertions.assertTrue(result.getTotalElements() > 0);
         Notification notif = result.iterator().next();
-        Assert.assertNotNull(notif.getId());
+        Assertions.assertNotNull(notif.getId());
         System.out.println(notif.getSubmitTime());
     }
 
     @Test
     public void testInsertNotification() throws IOException {
         Sender s = senderDao.findById("keuangan").get();
-        Assert.assertNotNull(s);
+        Assertions.assertNotNull(s);
 
         NotificationConfiguration config = notificationConfigurationDao.findById("keu-tagihan").get();
-        Assert.assertNotNull(config);
+        Assertions.assertNotNull(config);
 
         Notification n = new Notification();
         n.setNotificationConfiguration(config);
         n.setNotificationData(new String(FileCopyUtils.copyToByteArray(notificationData.getFile())));
 
         notificationDao.save(n);
-        Assert.assertNotNull(n.getId());
+        Assertions.assertNotNull(n.getId());
     }
 
 //Registrasi-selesai

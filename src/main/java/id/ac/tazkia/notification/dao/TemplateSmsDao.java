@@ -1,7 +1,8 @@
 package id.ac.tazkia.notification.dao;
 
-import id.ac.tazkia.notification.entity.TemplateSms;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TemplateSmsDao extends PagingAndSortingRepository<TemplateSms, String>{
+import id.ac.tazkia.notification.entity.TemplateSms;
+
+public interface TemplateSmsDao extends JpaRepository<TemplateSms, String>{
 }
